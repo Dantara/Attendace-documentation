@@ -1,0 +1,98 @@
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+HTML_HEAD: <style> #content{max-width:1800px;}</style>
+#+HTML_HEAD: <style> p{max-width:500px;}</style>
+#+HTML_HEAD: <style> li{max-width:800px;}</style>
+#+OPTIONS: ^:nil
+#+TITLE: Attendance system documentation
+
+* General information
+  + Application url: https://attendance-inno.herokuapp.com/
+  + All requests to json API should start with */api*: https://attendance-inno.herokuapp.com/api
+  + Path to login: https://attendance-inno.herokuapp.com/login  
+  + Path to sign up (temporary): https://attendance-inno.herokuapp.com/signup
+  + Application is hosting on heroku, due to limitations of free plan, first 
+  request will proceed slow.
+  + You should use https instead of http
+* Roles
+  In this version of application there are three roles:
+  + Student
+  + Teacher
+  + Administrator
+
+** All roles
+   + You can get a list of all roles by sending *GET* request to:
+   https://attendance-inno.herokuapp.com/api/roles
+   + Exaple of response:
+   #+BEGIN_SRC js
+     {
+         "roles": [
+             {
+                 "id": 1,
+                 "title": "Student"
+             },
+             {
+                 "id": 2,
+                 "title": "Teacher"
+             },
+             {
+                 "id": 3,
+                 "title": "Administrator"
+             }
+         ]
+     }
+   #+END_SRC
+** One role
+   + Also you can get one role by specifing id. You should send *GET* request to:
+   https://attendance-inno.herokuapp.com/api/roles/1 (where 1 is role id)
+   + Example of response:
+   #+BEGIN_SRC js
+     {
+         "role": {
+             "id": 1,
+             "title": "Student"
+         }
+     }
+   #+END_SRC
+* Logining
+  There is no json api interface to register in system. 
+  Instead of it, you should visit: https://attendance-inno.herokuapp.com/signup
+** Fresh login
+   + After registration you are able to login into the system via json request.
+   + You should send *POST* request with json body and specify user email and password.
+   + URL for request is: https://attendance-inno.herokuapp.com/api/session
+   + Example of json body of a request:
+   #+BEGIN_SRC js
+     {
+         "user": {
+             "email": "test@mail.ru",
+             "password": "qwerty123"
+         }
+     }
+   #+END_SRC
+   + Example of response json:
+     #+BEGIN_SRC js
+       {
+           "data": {
+               "renewal_token": "SFMyNTY.ZWJiMjc1MTYtZGU3Ny00ODc5LWJmNmMtZGI3ZGMzOTI5YmY1.kFbmaY81EHNLe97-L1eulA1_3UZloQ3VYtoRqFw6Foc",
+               "token": "SFMyNTY.MzIxMzJmMzEtODkwYy00ZGJkLTk0YTctMDk3ZmM1Y2VmM2Y3.onoKjazqNTT-4CEuaDPxe-97KtmANPwxKSKJAUgzx4Y"
+           }
+       }
+     #+END_SRC
+     + "token" is used to indentify user of a system. It has lifetime limited to 30 minutes.
+     + After expiration of token you can login one more time or use the next request.
+** Token renewal
+   + After token expiration you can update it via renewal_token.
+   + You can send *POST* request with empty body and additional header key "Authorization" (value is renewal_key) to the folowing URL: https://attendance-inno.herokuapp.com/api/api/session/renew
+   + Curl example:
+     #+BEGIN_SRC bash
+curl -X POST -H "Authorization: RENEW_TOKEN" https://attendance-inno.herokuapp.com/api/api/session/renew
+     #+END_SRC
+   + Example of response:
+     #+BEGIN_SRC js
+       {
+           "data": {
+               "renewal_token": "SFMyNTY.ZWJiMjc1MTYtZGU3Ny00ODc5LWJmNmMtZGI3ZGMzOTI5YmY1.kFbmaY81EHNLe97-L1eulA1_3UZloQ3VYtoRqFw6Foc",
+               "token": "SFMyNTY.MzIxMzJmMzEtODkwYy00ZGJkLTk0YTctMDk3ZmM1Y2VmM2Y3.onoKjazqNTT-4CEuaDPxe-97KtmANPwxKSKJAUgzx4Y"
+           }
+       }
+     #+END_SRC

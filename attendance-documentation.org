@@ -3,7 +3,7 @@
 #+HTML_HEAD: <style> p{max-width:500px;}</style>
 #+HTML_HEAD: <style> li{max-width:800px;}</style>
 #+OPTIONS: ^:nil
-#+TITLE: Attendance system documentation
+#+TITLE: Attendance system API documentation
 
 * General information
   + Application url: https://attendance-inno.herokuapp.com/
@@ -78,14 +78,14 @@
            }
        }
      #+END_SRC
-     + "token" is used to indentify user of a system. It has lifetime limited to 30 minutes.
+     + "token" is used to identify user of a system. It has lifetime limited to 30 minutes.
      + After expiration of token you can login one more time or use the next request.
 ** Token renewal
    + After token expiration you can update it via renewal_token.
-   + You can send *POST* request with empty body and additional header key "Authorization" (value is renewal_key) to the folowing URL: https://attendance-inno.herokuapp.com/api/api/session/renew
+   + You can send *POST* request with empty body and additional header key "Authorization" (value is renewal_token) to the following URL: https://attendance-inno.herokuapp.com/api/api/session/renew
    + Curl example:
      #+BEGIN_SRC bash
-curl -X POST -H "Authorization: RENEW_TOKEN" https://attendance-inno.herokuapp.com/api/api/session/renew
+       curl -X POST -H "Authorization: RENEW_TOKEN" https://attendance-inno.herokuapp.com/api/api/session/renew
      #+END_SRC
    + Example of response:
      #+BEGIN_SRC js
@@ -95,4 +95,241 @@ curl -X POST -H "Authorization: RENEW_TOKEN" https://attendance-inno.herokuapp.c
                "token": "SFMyNTY.MzIxMzJmMzEtODkwYy00ZGJkLTk0YTctMDk3ZmM1Y2VmM2Y3.onoKjazqNTT-4CEuaDPxe-97KtmANPwxKSKJAUgzx4Y"
            }
        }
+     #+END_SRC
+* Classes
+  * This section allowed only for authorized users.
+  * All requests should have additional header key "Authorization" (value is token from previous section)
+  * Classes are courses names
+** Create the class
+   + You should send *POST* request with json body to the following URL: https://attendance-inno.herokuapp.com/api/classes
+   + Example of request body:
+     #+BEGIN_SRC js
+       {
+           "class": {
+               "title": "Software project"
+           }
+       }
+     #+END_SRC
+     + The example of response:
+     #+BEGIN_SRC js
+       {
+           "class": {
+               "id": 1,
+               "title": "Software project"
+           }
+       }
+     #+END_SRC
+** Get all classes
+   + To get all classes you should send *GET* request to the following URL: https://attendance-inno.herokuapp.com/api/classes
+   + Example of response:
+     #+BEGIN_SRC js
+       {
+           "classes": [
+               {
+                   "id": 1,
+                   "title": "Software project"
+               },
+               {
+                   "id": 2,
+                   "title": "Control Theory"
+               }
+           ]
+       }
+     #+END_SRC
+** Delete the class
+   + You should send *DELETE* request to: https://attendance-inno.herokuapp.com/api/classes/2 (where 2 is id of a class)
+   + Response body is empty
+* Activities
+  * This section allowed only for authorized users.
+  * All requests should have additional header key "Authorization" (value is token from previous section)
+  * Activities are type of class (for example: Lecture, Tutorial, Lab...)
+** Create the activity
+   + You should send *POST* request with json body to the following URL: https://attendance-inno.herokuapp.com/api/activities
+   + Example of request body:
+     #+BEGIN_SRC js
+       {
+           "activity": {
+               "title": "Lecture"
+           }
+       }
+     #+END_SRC
+     + The example of response:
+     #+BEGIN_SRC js
+       {
+           "activity": {
+               "id": 1,
+               "title": "Lecture"
+           }
+       }
+     #+END_SRC
+** Get all activities
+   + To get all activities you should send *GET* request to the following URL: https://attendance-inno.herokuapp.com/api/activities
+   + Example of response:
+     #+BEGIN_SRC js
+       {
+           "activities": [
+               {
+                   "id": 1,
+                   "title": "Lecture"
+               },
+               {
+                   "id": 2,
+                   "title": "Tutorial"
+               }
+           ]
+       }
+     #+END_SRC
+** Delete the activity
+   + You should send *DELETE* request to: https://attendance-inno.herokuapp.com/api/activities/2 (where 2 is id of a activity)
+   + Response body is empty
+* Presence
+  * Presence is main object which stores attendance of a users
+  * This section allowed only for authorized users.
+  * All requests should have additional header key "Authorization" (value is token from previous section)
+** Create the presence
+   + You should send *POST* request with json body to the following URL: https://attendance-inno.herokuapp.com/api/presences
+   + Example of request body:
+     #+BEGIN_SRC js
+       {
+           "presence": {
+               "user_id": 1,
+               "class_id": 2,
+               "activity_id": 2,
+               "week": 10
+           }
+       }
+     #+END_SRC
+   + Example of response:
+     #+BEGIN_SRC js
+       {
+           "presence": {
+               "activity": {
+                   "id": 2,
+                   "title": "Tutorial"
+               },
+               "class": {
+                   "id": 2,
+                   "title": "Software project"
+               },
+               "id": 21,
+               "user": {
+                   "email": "test@mail.ru",
+                   "first_name": "Test_Name",
+                   "id": 1,
+                   "last_name": "Test_Surname",
+                   "role": "Student"
+               },
+               "week": 10
+           }
+       }
+     #+END_SRC
+** Get all presences
+   + To get all presences you should send *GET* request to the following URL: https://attendance-inno.herokuapp.com/api/presences
+   + Example of response:
+     #+BEGIN_SRC js
+       {
+           "presences": [
+               {
+                   "activity": {
+                       "id": 1,
+                       "title": "Lecture"
+                   },
+                   "class": {
+                       "id": 2,
+                       "title": "Software project"
+                   },
+                   "id": 11,
+                   "user": {
+                       "email": "123@123.ru",
+                       "first_name": "123",
+                       "id": 2,
+                       "last_name": "123",
+                       "role": "Administrator"
+                   },
+                   "week": 10
+               },
+               {
+                   "activity": {
+                       "id": 2,
+                       "title": "Tutorial"
+                   },
+                   "class": {
+                       "id": 2,
+                       "title": "Software project"
+                   },
+                   "id": 16,
+                   "user": {
+                       "email": "123@123.ru",
+                       "first_name": "123",
+                       "id": 2,
+                       "last_name": "123",
+                       "role": "Administrator"
+                   },
+                   "week": 10
+               },
+           ]
+       }
+     #+END_SRC
+** Delete the presence
+   + You should send *DELETE* request to: https://attendance-inno.herokuapp.com/api/presence/2 (where 2 is id of a presence)
+   + Response body is empty
+* User specific requests
+  + There requests returns information about the user.
+  + This section allowed only for authorized users.
+  + All requests should have additional header key "Authorization" (value is token from previous section)
+** Current user
+   + The following request returns main information about the user.
+   + You should sent *GET* request to: https://attendance-inno.herokuapp.com/api/current_user
+   + Example of a response:
+     #+BEGIN_SRC js
+       {
+           "user": {
+               "email": "test@mail.ru",
+               "first_name": "Test_Name",
+               "id": 1,
+               "last_name": "Test_Surname",
+               "role": "Student"
+           }
+       }
+     #+END_SRC
+** User role
+   + This request returns role of current user
+   + You should sent *GET* request to: https://attendance-inno.herokuapp.com/api/user_role
+   + Example of response
+     #+BEGIN_SRC js
+       {
+           "role": {
+               "id": 2,
+               "title": "Student"
+           }
+       }
+     #+END_SRC
+** User presences 
+   + This request return all presences of current user
+   + You should sent *GET* request to: https://attendance-inno.herokuapp.com/api/user_presences
+   + Example of response
+     #+BEGIN_SRC js
+{
+  "presences": [
+    {
+      "activity": {
+        "id": 2,
+        "title": "Tutorial"
+      },
+      "class": {
+        "id": 2,
+        "title": "Software project"
+      },
+      "id": 21,
+      "user": {
+        "email": "test@mail.ru",
+        "first_name": "Test_Name",
+        "id": 1,
+        "last_name": "Test_Surname",
+        "role": "Student"
+      },
+      "week": 10
+    }
+  ]
+}
      #+END_SRC

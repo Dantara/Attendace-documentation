@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-27 Fri 02:36 -->
+<!-- 2020-03-27 Fri 14:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Attendance system documentation</title>
+<title>Attendance system API documentation</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -250,30 +250,58 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Attendance system documentation</h1>
+<h1 class="title">Attendance system API documentation</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org135482e">1. General information</a></li>
-<li><a href="#org37bddf8">2. Roles</a>
+<li><a href="#org94db324">1. General information</a></li>
+<li><a href="#orgb821c4e">2. Roles</a>
 <ul>
-<li><a href="#orgd84e999">2.1. All roles</a></li>
-<li><a href="#org59c42cb">2.2. One role</a></li>
+<li><a href="#orgec52b3a">2.1. All roles</a></li>
+<li><a href="#orgf16b6d4">2.2. One role</a></li>
 </ul>
 </li>
-<li><a href="#orgeb39e75">3. Logining</a>
+<li><a href="#orgdb0789f">3. Logining</a>
 <ul>
-<li><a href="#org7a7f4b6">3.1. Fresh login</a></li>
-<li><a href="#orga04acda">3.2. Token renewal</a></li>
+<li><a href="#org58b66cf">3.1. Fresh login</a></li>
+<li><a href="#orgfb89b43">3.2. Token renewal</a></li>
+</ul>
+</li>
+<li><a href="#org5ea954e">4. Classes</a>
+<ul>
+<li><a href="#org33a3361">4.1. Create the class</a></li>
+<li><a href="#org811a701">4.2. Get all classes</a></li>
+<li><a href="#orga342573">4.3. Delete the class</a></li>
+</ul>
+</li>
+<li><a href="#org4d5b30b">5. Activities</a>
+<ul>
+<li><a href="#org20e5b29">5.1. Create the activity</a></li>
+<li><a href="#orgd517fda">5.2. Get all activities</a></li>
+<li><a href="#org80872f0">5.3. Delete the activity</a></li>
+</ul>
+</li>
+<li><a href="#orge7ad8f1">6. Presence</a>
+<ul>
+<li><a href="#orga8eab7a">6.1. Create the presence</a></li>
+<li><a href="#org4a679a6">6.2. Get all presences</a></li>
+<li><a href="#org95faf4b">6.3. Delete the presence</a></li>
+</ul>
+</li>
+<li><a href="#orgcb97923">7. User specific requests</a>
+<ul>
+<li><a href="#orgf156a4c">7.1. Current user</a></li>
+<li><a href="#orgca81cfc">7.2. User role</a></li>
+<li><a href="#org2c299ad">7.3. User presences</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org135482e" class="outline-2">
-<h2 id="org135482e"><span class="section-number-2">1</span> General information</h2>
+<div id="outline-container-org94db324" class="outline-2">
+<h2 id="org94db324"><span class="section-number-2">1</span> General information</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Application url: <a href="https://attendance-inno.herokuapp.com/">https://attendance-inno.herokuapp.com/</a></li>
@@ -290,8 +318,8 @@ request will proceed slow.
 </ul>
 </div>
 </div>
-<div id="outline-container-org37bddf8" class="outline-2">
-<h2 id="org37bddf8"><span class="section-number-2">2</span> Roles</h2>
+<div id="outline-container-orgb821c4e" class="outline-2">
+<h2 id="orgb821c4e"><span class="section-number-2">2</span> Roles</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 In this version of application there are three roles:
@@ -303,8 +331,8 @@ In this version of application there are three roles:
 </ul>
 </div>
 
-<div id="outline-container-orgd84e999" class="outline-3">
-<h3 id="orgd84e999"><span class="section-number-3">2.1</span> All roles</h3>
+<div id="outline-container-orgec52b3a" class="outline-3">
+<h3 id="orgec52b3a"><span class="section-number-3">2.1</span> All roles</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>You can get a list of all roles by sending <b>GET</b> request to:</li>
@@ -336,8 +364,8 @@ In this version of application there are three roles:
 </div>
 </div>
 </div>
-<div id="outline-container-org59c42cb" class="outline-3">
-<h3 id="org59c42cb"><span class="section-number-3">2.2</span> One role</h3>
+<div id="outline-container-orgf16b6d4" class="outline-3">
+<h3 id="orgf16b6d4"><span class="section-number-3">2.2</span> One role</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>Also you can get one role by specifing id. You should send <b>GET</b> request to:</li>
@@ -360,16 +388,16 @@ In this version of application there are three roles:
 </div>
 </div>
 </div>
-<div id="outline-container-orgeb39e75" class="outline-2">
-<h2 id="orgeb39e75"><span class="section-number-2">3</span> Logining</h2>
+<div id="outline-container-orgdb0789f" class="outline-2">
+<h2 id="orgdb0789f"><span class="section-number-2">3</span> Logining</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 There is no json api interface to register in system. 
 Instead of it, you should visit: <a href="https://attendance-inno.herokuapp.com/signup">https://attendance-inno.herokuapp.com/signup</a>
 </p>
 </div>
-<div id="outline-container-org7a7f4b6" class="outline-3">
-<h3 id="org7a7f4b6"><span class="section-number-3">3.1</span> Fresh login</h3>
+<div id="outline-container-org58b66cf" class="outline-3">
+<h3 id="org58b66cf"><span class="section-number-3">3.1</span> Fresh login</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>After registration you are able to login into the system via json request.</li>
@@ -400,18 +428,18 @@ Example of response json:
 </pre>
 </div>
 <ul class="org-ul">
-<li>"token" is used to indentify user of a system. It has lifetime limited to 30 minutes.</li>
+<li>"token" is used to identify user of a system. It has lifetime limited to 30 minutes.</li>
 <li>After expiration of token you can login one more time or use the next request.</li>
 </ul></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga04acda" class="outline-3">
-<h3 id="orga04acda"><span class="section-number-3">3.2</span> Token renewal</h3>
+<div id="outline-container-orgfb89b43" class="outline-3">
+<h3 id="orgfb89b43"><span class="section-number-3">3.2</span> Token renewal</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>After token expiration you can update it via renewal_token.</li>
-<li>You can send <b>POST</b> request with empty body and additional header key "Authorization" (value is renewal_key) to the folowing URL: <a href="https://attendance-inno.herokuapp.com/api/api/session/renew">https://attendance-inno.herokuapp.com/api/api/session/renew</a></li>
+<li>You can send <b>POST</b> request with empty body and additional header key "Authorization" (value is renewal_token) to the following URL: <a href="https://attendance-inno.herokuapp.com/api/api/session/renew">https://attendance-inno.herokuapp.com/api/api/session/renew</a></li>
 <li><p>
 Curl example:
 </p>
@@ -435,9 +463,378 @@ Example of response:
 </div>
 </div>
 </div>
+<div id="outline-container-org5ea954e" class="outline-2">
+<h2 id="org5ea954e"><span class="section-number-2">4</span> Classes</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>This section allowed only for authorized users.</li>
+<li>All requests should have additional header key "Authorization" (value is token from previous section)</li>
+<li>Classes are courses names</li>
+</ul>
+</div>
+<div id="outline-container-org33a3361" class="outline-3">
+<h3 id="org33a3361"><span class="section-number-3">4.1</span> Create the class</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>You should send <b>POST</b> request with json body to the following URL: <a href="https://attendance-inno.herokuapp.com/api/classes">https://attendance-inno.herokuapp.com/api/classes</a></li>
+<li><p>
+Example of request body:
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+    <span style="color: #2aa198;">"class"</span>: <span style="color: #b58900;">{</span>
+        <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Software project"</span>
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>The example of response:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+    <span style="color: #2aa198;">"class"</span>: <span style="color: #b58900;">{</span>
+        <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">1</span>,
+        <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Software project"</span>
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org811a701" class="outline-3">
+<h3 id="org811a701"><span class="section-number-3">4.2</span> Get all classes</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>To get all classes you should send <b>GET</b> request to the following URL: <a href="https://attendance-inno.herokuapp.com/api/classes">https://attendance-inno.herokuapp.com/api/classes</a></li>
+<li><p>
+Example of response:
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+    <span style="color: #2aa198;">"classes"</span>: <span style="color: #b58900;">[</span>
+        <span style="color: #268bd2;">{</span>
+            <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">1</span>,
+            <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Software project"</span>
+        <span style="color: #268bd2;">}</span>,
+        <span style="color: #268bd2;">{</span>
+            <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">2</span>,
+            <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Control Theory"</span>
+        <span style="color: #268bd2;">}</span>
+    <span style="color: #b58900;">]</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga342573" class="outline-3">
+<h3 id="orga342573"><span class="section-number-3">4.3</span> Delete the class</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>You should send <b>DELETE</b> request to: <a href="https://attendance-inno.herokuapp.com/api/classes/2">https://attendance-inno.herokuapp.com/api/classes/2</a> (where 2 is id of a class)</li>
+<li>Response body is empty</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org4d5b30b" class="outline-2">
+<h2 id="org4d5b30b"><span class="section-number-2">5</span> Activities</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>This section allowed only for authorized users.</li>
+<li>All requests should have additional header key "Authorization" (value is token from previous section)</li>
+<li>Activities are type of class (for example: Lecture, Tutorial, Lab&#x2026;)</li>
+</ul>
+</div>
+<div id="outline-container-org20e5b29" class="outline-3">
+<h3 id="org20e5b29"><span class="section-number-3">5.1</span> Create the activity</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>You should send <b>POST</b> request with json body to the following URL: <a href="https://attendance-inno.herokuapp.com/api/activities">https://attendance-inno.herokuapp.com/api/activities</a></li>
+<li><p>
+Example of request body:
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+    <span style="color: #2aa198;">"activity"</span>: <span style="color: #b58900;">{</span>
+        <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Lecture"</span>
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>The example of response:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+    <span style="color: #2aa198;">"activity"</span>: <span style="color: #b58900;">{</span>
+        <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">1</span>,
+        <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Lecture"</span>
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd517fda" class="outline-3">
+<h3 id="orgd517fda"><span class="section-number-3">5.2</span> Get all activities</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>To get all activities you should send <b>GET</b> request to the following URL: <a href="https://attendance-inno.herokuapp.com/api/activities">https://attendance-inno.herokuapp.com/api/activities</a></li>
+<li><p>
+Example of response:
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+    <span style="color: #2aa198;">"activities"</span>: <span style="color: #b58900;">[</span>
+        <span style="color: #268bd2;">{</span>
+            <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">1</span>,
+            <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Lecture"</span>
+        <span style="color: #268bd2;">}</span>,
+        <span style="color: #268bd2;">{</span>
+            <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">2</span>,
+            <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Tutorial"</span>
+        <span style="color: #268bd2;">}</span>
+    <span style="color: #b58900;">]</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org80872f0" class="outline-3">
+<h3 id="org80872f0"><span class="section-number-3">5.3</span> Delete the activity</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>You should send <b>DELETE</b> request to: <a href="https://attendance-inno.herokuapp.com/api/activities/2">https://attendance-inno.herokuapp.com/api/activities/2</a> (where 2 is id of a activity)</li>
+<li>Response body is empty</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orge7ad8f1" class="outline-2">
+<h2 id="orge7ad8f1"><span class="section-number-2">6</span> Presence</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>Presence is main object which stores attendance of a users</li>
+<li>This section allowed only for authorized users.</li>
+<li>All requests should have additional header key "Authorization" (value is token from previous section)</li>
+</ul>
+</div>
+<div id="outline-container-orga8eab7a" class="outline-3">
+<h3 id="orga8eab7a"><span class="section-number-3">6.1</span> Create the presence</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>You should send <b>POST</b> request with json body to the following URL: <a href="https://attendance-inno.herokuapp.com/api/presences">https://attendance-inno.herokuapp.com/api/presences</a></li>
+<li><p>
+Example of request body:
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+    <span style="color: #2aa198;">"presence"</span>: <span style="color: #b58900;">{</span>
+        <span style="color: #2aa198;">"user_id"</span>: <span style="color: #6c71c4;">1</span>,
+        <span style="color: #2aa198;">"class_id"</span>: <span style="color: #6c71c4;">2</span>,
+        <span style="color: #2aa198;">"activity_id"</span>: <span style="color: #6c71c4;">2</span>,
+        <span style="color: #2aa198;">"week"</span>: <span style="color: #6c71c4;">10</span>
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div></li>
+<li><p>
+Example of response:
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+    <span style="color: #2aa198;">"presence"</span>: <span style="color: #b58900;">{</span>
+        <span style="color: #2aa198;">"activity"</span>: <span style="color: #268bd2;">{</span>
+            <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">2</span>,
+            <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Tutorial"</span>
+        <span style="color: #268bd2;">}</span>,
+        <span style="color: #2aa198;">"class"</span>: <span style="color: #268bd2;">{</span>
+            <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">2</span>,
+            <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Software project"</span>
+        <span style="color: #268bd2;">}</span>,
+        <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">21</span>,
+        <span style="color: #2aa198;">"user"</span>: <span style="color: #268bd2;">{</span>
+            <span style="color: #2aa198;">"email"</span>: <span style="color: #2aa198;">"test@mail.ru"</span>,
+            <span style="color: #2aa198;">"first_name"</span>: <span style="color: #2aa198;">"Test_Name"</span>,
+            <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">1</span>,
+            <span style="color: #2aa198;">"last_name"</span>: <span style="color: #2aa198;">"Test_Surname"</span>,
+            <span style="color: #2aa198;">"role"</span>: <span style="color: #2aa198;">"Student"</span>
+        <span style="color: #268bd2;">}</span>,
+        <span style="color: #2aa198;">"week"</span>: <span style="color: #6c71c4;">10</span>
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4a679a6" class="outline-3">
+<h3 id="org4a679a6"><span class="section-number-3">6.2</span> Get all presences</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>To get all presences you should send <b>GET</b> request to the following URL: <a href="https://attendance-inno.herokuapp.com/api/presences">https://attendance-inno.herokuapp.com/api/presences</a></li>
+<li><p>
+Example of response:
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+    <span style="color: #2aa198;">"presences"</span>: <span style="color: #b58900;">[</span>
+        <span style="color: #268bd2;">{</span>
+            <span style="color: #2aa198;">"activity"</span>: <span style="color: #6c71c4;">{</span>
+                <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">1</span>,
+                <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Lecture"</span>
+            <span style="color: #6c71c4;">}</span>,
+            <span style="color: #2aa198;">"class"</span>: <span style="color: #6c71c4;">{</span>
+                <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">2</span>,
+                <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Software project"</span>
+            <span style="color: #6c71c4;">}</span>,
+            <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">11</span>,
+            <span style="color: #2aa198;">"user"</span>: <span style="color: #6c71c4;">{</span>
+                <span style="color: #2aa198;">"email"</span>: <span style="color: #2aa198;">"123@123.ru"</span>,
+                <span style="color: #2aa198;">"first_name"</span>: <span style="color: #2aa198;">"123"</span>,
+                <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">2</span>,
+                <span style="color: #2aa198;">"last_name"</span>: <span style="color: #2aa198;">"123"</span>,
+                <span style="color: #2aa198;">"role"</span>: <span style="color: #2aa198;">"Administrator"</span>
+            <span style="color: #6c71c4;">}</span>,
+            <span style="color: #2aa198;">"week"</span>: <span style="color: #6c71c4;">10</span>
+        <span style="color: #268bd2;">}</span>,
+        <span style="color: #268bd2;">{</span>
+            <span style="color: #2aa198;">"activity"</span>: <span style="color: #6c71c4;">{</span>
+                <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">2</span>,
+                <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Tutorial"</span>
+            <span style="color: #6c71c4;">}</span>,
+            <span style="color: #2aa198;">"class"</span>: <span style="color: #6c71c4;">{</span>
+                <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">2</span>,
+                <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Software project"</span>
+            <span style="color: #6c71c4;">}</span>,
+            <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">16</span>,
+            <span style="color: #2aa198;">"user"</span>: <span style="color: #6c71c4;">{</span>
+                <span style="color: #2aa198;">"email"</span>: <span style="color: #2aa198;">"123@123.ru"</span>,
+                <span style="color: #2aa198;">"first_name"</span>: <span style="color: #2aa198;">"123"</span>,
+                <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">2</span>,
+                <span style="color: #2aa198;">"last_name"</span>: <span style="color: #2aa198;">"123"</span>,
+                <span style="color: #2aa198;">"role"</span>: <span style="color: #2aa198;">"Administrator"</span>
+            <span style="color: #6c71c4;">}</span>,
+            <span style="color: #2aa198;">"week"</span>: <span style="color: #6c71c4;">10</span>
+        <span style="color: #268bd2;">}</span>,
+    <span style="color: #b58900;">]</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org95faf4b" class="outline-3">
+<h3 id="org95faf4b"><span class="section-number-3">6.3</span> Delete the presence</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>You should send <b>DELETE</b> request to: <a href="https://attendance-inno.herokuapp.com/api/presence/2">https://attendance-inno.herokuapp.com/api/presence/2</a> (where 2 is id of a presence)</li>
+<li>Response body is empty</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcb97923" class="outline-2">
+<h2 id="orgcb97923"><span class="section-number-2">7</span> User specific requests</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>There requests returns information about the user.</li>
+<li>This section allowed only for authorized users.</li>
+<li>All requests should have additional header key "Authorization" (value is token from previous section)</li>
+</ul>
+</div>
+<div id="outline-container-orgf156a4c" class="outline-3">
+<h3 id="orgf156a4c"><span class="section-number-3">7.1</span> Current user</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>The following request returns main information about the user.</li>
+<li>You should sent <b>GET</b> request to: <a href="https://attendance-inno.herokuapp.com/api/current_user">https://attendance-inno.herokuapp.com/api/current_user</a></li>
+<li><p>
+Example of a response:
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+    <span style="color: #2aa198;">"user"</span>: <span style="color: #b58900;">{</span>
+        <span style="color: #2aa198;">"email"</span>: <span style="color: #2aa198;">"test@mail.ru"</span>,
+        <span style="color: #2aa198;">"first_name"</span>: <span style="color: #2aa198;">"Test_Name"</span>,
+        <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">1</span>,
+        <span style="color: #2aa198;">"last_name"</span>: <span style="color: #2aa198;">"Test_Surname"</span>,
+        <span style="color: #2aa198;">"role"</span>: <span style="color: #2aa198;">"Student"</span>
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgca81cfc" class="outline-3">
+<h3 id="orgca81cfc"><span class="section-number-3">7.2</span> User role</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>This request returns role of current user</li>
+<li>You should sent <b>GET</b> request to: <a href="https://attendance-inno.herokuapp.com/api/user_role">https://attendance-inno.herokuapp.com/api/user_role</a></li>
+<li><p>
+Example of response
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+    <span style="color: #2aa198;">"role"</span>: <span style="color: #b58900;">{</span>
+        <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">2</span>,
+        <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Student"</span>
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2c299ad" class="outline-3">
+<h3 id="org2c299ad"><span class="section-number-3">7.3</span> User presences</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>This request return all presences of current user</li>
+<li>You should sent <b>GET</b> request to: <a href="https://attendance-inno.herokuapp.com/api/user_presences">https://attendance-inno.herokuapp.com/api/user_presences</a></li>
+<li><p>
+Example of response
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+  <span style="color: #2aa198;">"presences"</span>: <span style="color: #b58900;">[</span>
+    <span style="color: #268bd2;">{</span>
+      <span style="color: #2aa198;">"activity"</span>: <span style="color: #6c71c4;">{</span>
+        <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">2</span>,
+        <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Tutorial"</span>
+      <span style="color: #6c71c4;">}</span>,
+      <span style="color: #2aa198;">"class"</span>: <span style="color: #6c71c4;">{</span>
+        <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">2</span>,
+        <span style="color: #2aa198;">"title"</span>: <span style="color: #2aa198;">"Software project"</span>
+      <span style="color: #6c71c4;">}</span>,
+      <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">21</span>,
+      <span style="color: #2aa198;">"user"</span>: <span style="color: #6c71c4;">{</span>
+        <span style="color: #2aa198;">"email"</span>: <span style="color: #2aa198;">"test@mail.ru"</span>,
+        <span style="color: #2aa198;">"first_name"</span>: <span style="color: #2aa198;">"Test_Name"</span>,
+        <span style="color: #2aa198;">"id"</span>: <span style="color: #6c71c4;">1</span>,
+        <span style="color: #2aa198;">"last_name"</span>: <span style="color: #2aa198;">"Test_Surname"</span>,
+        <span style="color: #2aa198;">"role"</span>: <span style="color: #2aa198;">"Student"</span>
+      <span style="color: #6c71c4;">}</span>,
+      <span style="color: #2aa198;">"week"</span>: <span style="color: #6c71c4;">10</span>
+    <span style="color: #268bd2;">}</span>
+  <span style="color: #b58900;">]</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2020-03-27 Fri 02:36</p>
+<p class="date">Created: 2020-03-27 Fri 14:48</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

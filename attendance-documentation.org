@@ -10,15 +10,18 @@
   + All requests to json API should start with */api*: https://attendance-inno.herokuapp.com/api
   + Path to login: https://attendance-inno.herokuapp.com/login  
   + Path to sign up (temporary): https://attendance-inno.herokuapp.com/signup
-  + Application is hosting on heroku, due to limitations of free plan, first 
-  request will proceed slow.
+  + Application is hosting on heroku, due to limitations of free plan, first request will proceed slow.
   + You should use https instead of http
+* Change Log
+  + Added list of enrolled classes in "Current user" request.
+  + Added "User classes" request (see "User specific requests" section).
+  + Added "Class students" request (see "Classes" section).
 * Roles
   In this version of application there are three roles:
   + Student
   + Teacher
   + Administrator
-
+    
 ** All roles
    + You can get a list of all roles by sending *GET* request to:
    https://attendance-inno.herokuapp.com/api/roles
@@ -139,6 +142,29 @@
 ** Delete the class
    + You should send *DELETE* request to: https://attendance-inno.herokuapp.com/api/classes/2 (where 2 is id of a class)
    + Response body is empty
+** Class students
+   + This request return the list of students for specific course.
+   + You should send *GET* requests to: https://attendance-inno.herokuapp.com/api/class_students/2 (where 2 is id of a class)
+   + Example of response:
+     #+BEGIN_SRC js
+       {
+           "students": [
+               {
+                   "classes": [
+                       {
+                           "id": 2,
+                           "title": "Software project"
+                       }
+                   ],
+                   "email": "test@mail.ru",
+                   "first_name": "Test_Name",
+                   "id": 1,
+                   "last_name": "Test_Surname",
+                   "role": "Student"
+               }
+           ]
+       }
+     #+END_SRC
 * Activities
   * This section allowed only for authorized users.
   * All requests should have additional header key "Authorization" (value is token from previous section)
@@ -288,7 +314,13 @@
                "first_name": "Test_Name",
                "id": 1,
                "last_name": "Test_Surname",
-               "role": "Student"
+               "role": "Student",
+               "classes": [
+                   {
+                       "id": 2,
+                       "title": "Software project"
+                   }
+               ]
            }
        }
      #+END_SRC
@@ -309,27 +341,43 @@
    + You should sent *GET* request to: https://attendance-inno.herokuapp.com/api/user_presences
    + Example of response
      #+BEGIN_SRC js
-{
-  "presences": [
-    {
-      "activity": {
-        "id": 2,
-        "title": "Tutorial"
-      },
-      "class": {
-        "id": 2,
-        "title": "Software project"
-      },
-      "id": 21,
-      "user": {
-        "email": "test@mail.ru",
-        "first_name": "Test_Name",
-        "id": 1,
-        "last_name": "Test_Surname",
-        "role": "Student"
-      },
-      "week": 10
-    }
-  ]
-}
+       {
+           "presences": [
+               {
+                   "activity": {
+                       "id": 2,
+                       "title": "Tutorial"
+                   },
+                   "class": {
+                       "id": 2,
+                       "title": "Software project"
+                   },
+                   "id": 21,
+                   "user": {
+                       "email": "test@mail.ru",
+                       "first_name": "Test_Name",
+                       "id": 1,
+                       "last_name": "Test_Surname",
+                       "role": "Student"
+                   },
+                   "week": 10
+               }
+           ]
+       }
      #+END_SRC
+** User classes
+   + This request return all classes which was enrolled by current user.
+   + This request works both with student and teacher
+   + You should sent *GET* request to: https://attendance-inno.herokuapp.com/api/user_classes
+   + Example of response
+     #+BEGIN_SRC js
+       {
+           "classes": [
+               {
+                   "id": 2,
+                   "title": "Software project"
+               }
+           ]
+       }
+     #+END_SRC
+     

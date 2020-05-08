@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-19 Sun 02:08 -->
+<!-- 2020-05-08 Fri 04:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Attendance system API documentation</title>
@@ -255,56 +255,56 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgbae804e">1. General information</a></li>
-<li><a href="#org257f0c0">2. Change Log</a></li>
-<li><a href="#orgbe3adfe">3. Roles</a>
+<li><a href="#org974688e">1. General information</a></li>
+<li><a href="#org9aa3dab">2. Change Log</a></li>
+<li><a href="#orgb303dd3">3. Roles</a>
 <ul>
-<li><a href="#org6b4a09f">3.1. All roles</a></li>
-<li><a href="#org79edd2a">3.2. One role</a></li>
+<li><a href="#orga757135">3.1. All roles</a></li>
+<li><a href="#org0664813">3.2. One role</a></li>
 </ul>
 </li>
-<li><a href="#orgba662f7">4. Logining</a>
+<li><a href="#orga136362">4. Logining</a>
 <ul>
-<li><a href="#org34d4860">4.1. Fresh login</a></li>
-<li><a href="#org27c2650">4.2. Token renewal</a></li>
+<li><a href="#org174aa6b">4.1. Fresh login</a></li>
+<li><a href="#org4bbfc66">4.2. Token renewal</a></li>
 </ul>
 </li>
-<li><a href="#org6a5c6e1">5. Classes</a>
+<li><a href="#orgeaa7fad">5. Classes</a>
 <ul>
-<li><a href="#org0574f53">5.1. Create the class</a></li>
-<li><a href="#org3875774">5.2. Get all classes</a></li>
-<li><a href="#orge54630e">5.3. Delete the class</a></li>
-<li><a href="#org97c3b22">5.4. Class students</a></li>
+<li><a href="#org77b7f2b">5.1. Create the class</a></li>
+<li><a href="#org0040b87">5.2. Get all classes</a></li>
+<li><a href="#orgdb276d1">5.3. Delete the class</a></li>
+<li><a href="#org6e46350">5.4. Class students</a></li>
 </ul>
 </li>
-<li><a href="#org4a33776">6. Activities</a>
+<li><a href="#orgda626ff">6. Activities</a>
 <ul>
-<li><a href="#orgeca11c1">6.1. Create the activity</a></li>
-<li><a href="#org45e3f1a">6.2. Get all activities</a></li>
-<li><a href="#org6cf0788">6.3. Delete the activity</a></li>
+<li><a href="#org5d222d3">6.1. Create the activity</a></li>
+<li><a href="#orgbadc404">6.2. Get all activities</a></li>
+<li><a href="#org6d42a44">6.3. Delete the activity</a></li>
 </ul>
 </li>
-<li><a href="#org8cf52cf">7. Presence</a>
+<li><a href="#org45fb8fe">7. Presence</a>
 <ul>
-<li><a href="#org22ab3cc">7.1. Create the presence</a></li>
-<li><a href="#org4a37c9f">7.2. Get all presences</a></li>
-<li><a href="#org1296ec0">7.3. Delete the presence</a></li>
+<li><a href="#org72684ca">7.1. Create the presence</a></li>
+<li><a href="#org2b6cf00">7.2. Get all presences</a></li>
+<li><a href="#org4966bcf">7.3. Delete the presence</a></li>
 </ul>
 </li>
-<li><a href="#org4672452">8. User specific requests</a>
+<li><a href="#orgbf0914d">8. User specific requests</a>
 <ul>
-<li><a href="#org7c29898">8.1. Current user</a></li>
-<li><a href="#org3f1efb5">8.2. User role</a></li>
-<li><a href="#orga27c585">8.3. User presences</a></li>
-<li><a href="#org2b0228f">8.4. User classes</a></li>
+<li><a href="#orga88bdd3">8.1. Current user</a></li>
+<li><a href="#orgf5a4a60">8.2. User role</a></li>
+<li><a href="#orgcee2049">8.3. User presences</a></li>
+<li><a href="#org4ec7cee">8.4. User classes</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgbae804e" class="outline-2">
-<h2 id="orgbae804e"><span class="section-number-2">1</span> General information</h2>
+<div id="outline-container-org974688e" class="outline-2">
+<h2 id="org974688e"><span class="section-number-2">1</span> General information</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Application url: <a href="https://attendance-inno.herokuapp.com/">https://attendance-inno.herokuapp.com/</a></li>
@@ -316,8 +316,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org257f0c0" class="outline-2">
-<h2 id="org257f0c0"><span class="section-number-2">2</span> Change Log</h2>
+<div id="outline-container-org9aa3dab" class="outline-2">
+<h2 id="org9aa3dab"><span class="section-number-2">2</span> Change Log</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>Added list of enrolled classes in "Current user" request.</li>
@@ -326,8 +326,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbe3adfe" class="outline-2">
-<h2 id="orgbe3adfe"><span class="section-number-2">3</span> Roles</h2>
+<div id="outline-container-orgb303dd3" class="outline-2">
+<h2 id="orgb303dd3"><span class="section-number-2">3</span> Roles</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 In this version of application there are three roles:
@@ -339,8 +339,8 @@ In this version of application there are three roles:
 </ul>
 </div>
 
-<div id="outline-container-org6b4a09f" class="outline-3">
-<h3 id="org6b4a09f"><span class="section-number-3">3.1</span> All roles</h3>
+<div id="outline-container-orga757135" class="outline-3">
+<h3 id="orga757135"><span class="section-number-3">3.1</span> All roles</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>You can get a list of all roles by sending <b>GET</b> request to:</li>
@@ -372,8 +372,8 @@ In this version of application there are three roles:
 </div>
 </div>
 </div>
-<div id="outline-container-org79edd2a" class="outline-3">
-<h3 id="org79edd2a"><span class="section-number-3">3.2</span> One role</h3>
+<div id="outline-container-org0664813" class="outline-3">
+<h3 id="org0664813"><span class="section-number-3">3.2</span> One role</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>Also you can get one role by specifing id. You should send <b>GET</b> request to:</li>
@@ -396,16 +396,16 @@ In this version of application there are three roles:
 </div>
 </div>
 </div>
-<div id="outline-container-orgba662f7" class="outline-2">
-<h2 id="orgba662f7"><span class="section-number-2">4</span> Logining</h2>
+<div id="outline-container-orga136362" class="outline-2">
+<h2 id="orga136362"><span class="section-number-2">4</span> Logining</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 There is no json api interface to register in system. 
 Instead of it, you should visit: <a href="https://attendance-inno.herokuapp.com/signup">https://attendance-inno.herokuapp.com/signup</a>
 </p>
 </div>
-<div id="outline-container-org34d4860" class="outline-3">
-<h3 id="org34d4860"><span class="section-number-3">4.1</span> Fresh login</h3>
+<div id="outline-container-org174aa6b" class="outline-3">
+<h3 id="org174aa6b"><span class="section-number-3">4.1</span> Fresh login</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>After registration you are able to login into the system via json request.</li>
@@ -442,17 +442,17 @@ Example of response json:
 </ul>
 </div>
 </div>
-<div id="outline-container-org27c2650" class="outline-3">
-<h3 id="org27c2650"><span class="section-number-3">4.2</span> Token renewal</h3>
+<div id="outline-container-org4bbfc66" class="outline-3">
+<h3 id="org4bbfc66"><span class="section-number-3">4.2</span> Token renewal</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li>After token expiration you can update it via renewal_token.</li>
-<li>You can send <b>POST</b> request with empty body and additional header key "Authorization" (value is renewal_token) to the following URL: <a href="https://attendance-inno.herokuapp.com/api/api/session/renew">https://attendance-inno.herokuapp.com/api/api/session/renew</a></li>
+<li>You can send <b>POST</b> request with empty body and additional header key "Authorization" (value is renewal_token) to the following URL: <a href="https://attendance-inno.herokuapp.com/api/session/renew">https://attendance-inno.herokuapp.com/api/session/renew</a></li>
 <li><p>
 Curl example:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash">curl -X POST -H <span style="color: #2aa198;">"Authorization: RENEW_TOKEN"</span> https://attendance-inno.herokuapp.com/api/api/session/renew
+<pre class="src src-bash">curl -X POST -H <span style="color: #2aa198;">"Authorization: RENEW_TOKEN"</span> https://attendance-inno.herokuapp.com/api/session/renew
 </pre>
 </div></li>
 <li><p>
@@ -471,8 +471,8 @@ Example of response:
 </div>
 </div>
 </div>
-<div id="outline-container-org6a5c6e1" class="outline-2">
-<h2 id="org6a5c6e1"><span class="section-number-2">5</span> Classes</h2>
+<div id="outline-container-orgeaa7fad" class="outline-2">
+<h2 id="orgeaa7fad"><span class="section-number-2">5</span> Classes</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>This section allowed only for authorized users.</li>
@@ -480,8 +480,8 @@ Example of response:
 <li>Classes are courses names</li>
 </ul>
 </div>
-<div id="outline-container-org0574f53" class="outline-3">
-<h3 id="org0574f53"><span class="section-number-3">5.1</span> Create the class</h3>
+<div id="outline-container-org77b7f2b" class="outline-3">
+<h3 id="org77b7f2b"><span class="section-number-3">5.1</span> Create the class</h3>
 <div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>You should send <b>POST</b> request with json body to the following URL: <a href="https://attendance-inno.herokuapp.com/api/classes">https://attendance-inno.herokuapp.com/api/classes</a></li>
@@ -511,8 +511,8 @@ Example of request body:
 </ul>
 </div>
 </div>
-<div id="outline-container-org3875774" class="outline-3">
-<h3 id="org3875774"><span class="section-number-3">5.2</span> Get all classes</h3>
+<div id="outline-container-org0040b87" class="outline-3">
+<h3 id="org0040b87"><span class="section-number-3">5.2</span> Get all classes</h3>
 <div class="outline-text-3" id="text-5-2">
 <ul class="org-ul">
 <li>To get all classes you should send <b>GET</b> request to the following URL: <a href="https://attendance-inno.herokuapp.com/api/classes">https://attendance-inno.herokuapp.com/api/classes</a></li>
@@ -537,8 +537,8 @@ Example of response:
 </ul>
 </div>
 </div>
-<div id="outline-container-orge54630e" class="outline-3">
-<h3 id="orge54630e"><span class="section-number-3">5.3</span> Delete the class</h3>
+<div id="outline-container-orgdb276d1" class="outline-3">
+<h3 id="orgdb276d1"><span class="section-number-3">5.3</span> Delete the class</h3>
 <div class="outline-text-3" id="text-5-3">
 <ul class="org-ul">
 <li>You should send <b>DELETE</b> request to: <a href="https://attendance-inno.herokuapp.com/api/classes/2">https://attendance-inno.herokuapp.com/api/classes/2</a> (where 2 is id of a class)</li>
@@ -546,8 +546,8 @@ Example of response:
 </ul>
 </div>
 </div>
-<div id="outline-container-org97c3b22" class="outline-3">
-<h3 id="org97c3b22"><span class="section-number-3">5.4</span> Class students</h3>
+<div id="outline-container-org6e46350" class="outline-3">
+<h3 id="org6e46350"><span class="section-number-3">5.4</span> Class students</h3>
 <div class="outline-text-3" id="text-5-4">
 <ul class="org-ul">
 <li>This request return the list of students for specific course.</li>
@@ -579,8 +579,8 @@ Example of response:
 </div>
 </div>
 </div>
-<div id="outline-container-org4a33776" class="outline-2">
-<h2 id="org4a33776"><span class="section-number-2">6</span> Activities</h2>
+<div id="outline-container-orgda626ff" class="outline-2">
+<h2 id="orgda626ff"><span class="section-number-2">6</span> Activities</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>This section allowed only for authorized users.</li>
@@ -588,8 +588,8 @@ Example of response:
 <li>Activities are type of class (for example: Lecture, Tutorial, Lab&#x2026;)</li>
 </ul>
 </div>
-<div id="outline-container-orgeca11c1" class="outline-3">
-<h3 id="orgeca11c1"><span class="section-number-3">6.1</span> Create the activity</h3>
+<div id="outline-container-org5d222d3" class="outline-3">
+<h3 id="org5d222d3"><span class="section-number-3">6.1</span> Create the activity</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li>You should send <b>POST</b> request with json body to the following URL: <a href="https://attendance-inno.herokuapp.com/api/activities">https://attendance-inno.herokuapp.com/api/activities</a></li>
@@ -619,8 +619,8 @@ Example of request body:
 </ul>
 </div>
 </div>
-<div id="outline-container-org45e3f1a" class="outline-3">
-<h3 id="org45e3f1a"><span class="section-number-3">6.2</span> Get all activities</h3>
+<div id="outline-container-orgbadc404" class="outline-3">
+<h3 id="orgbadc404"><span class="section-number-3">6.2</span> Get all activities</h3>
 <div class="outline-text-3" id="text-6-2">
 <ul class="org-ul">
 <li>To get all activities you should send <b>GET</b> request to the following URL: <a href="https://attendance-inno.herokuapp.com/api/activities">https://attendance-inno.herokuapp.com/api/activities</a></li>
@@ -645,8 +645,8 @@ Example of response:
 </ul>
 </div>
 </div>
-<div id="outline-container-org6cf0788" class="outline-3">
-<h3 id="org6cf0788"><span class="section-number-3">6.3</span> Delete the activity</h3>
+<div id="outline-container-org6d42a44" class="outline-3">
+<h3 id="org6d42a44"><span class="section-number-3">6.3</span> Delete the activity</h3>
 <div class="outline-text-3" id="text-6-3">
 <ul class="org-ul">
 <li>You should send <b>DELETE</b> request to: <a href="https://attendance-inno.herokuapp.com/api/activities/2">https://attendance-inno.herokuapp.com/api/activities/2</a> (where 2 is id of a activity)</li>
@@ -655,8 +655,8 @@ Example of response:
 </div>
 </div>
 </div>
-<div id="outline-container-org8cf52cf" class="outline-2">
-<h2 id="org8cf52cf"><span class="section-number-2">7</span> Presence</h2>
+<div id="outline-container-org45fb8fe" class="outline-2">
+<h2 id="org45fb8fe"><span class="section-number-2">7</span> Presence</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li>Presence is main object which stores attendance of a users</li>
@@ -664,8 +664,8 @@ Example of response:
 <li>All requests should have additional header key "Authorization" (value is token from previous section)</li>
 </ul>
 </div>
-<div id="outline-container-org22ab3cc" class="outline-3">
-<h3 id="org22ab3cc"><span class="section-number-3">7.1</span> Create the presence</h3>
+<div id="outline-container-org72684ca" class="outline-3">
+<h3 id="org72684ca"><span class="section-number-3">7.1</span> Create the presence</h3>
 <div class="outline-text-3" id="text-7-1">
 <ul class="org-ul">
 <li>You should send <b>POST</b> request with json body to the following URL: <a href="https://attendance-inno.herokuapp.com/api/presences">https://attendance-inno.herokuapp.com/api/presences</a></li>
@@ -713,8 +713,8 @@ Example of response:
 </ul>
 </div>
 </div>
-<div id="outline-container-org4a37c9f" class="outline-3">
-<h3 id="org4a37c9f"><span class="section-number-3">7.2</span> Get all presences</h3>
+<div id="outline-container-org2b6cf00" class="outline-3">
+<h3 id="org2b6cf00"><span class="section-number-3">7.2</span> Get all presences</h3>
 <div class="outline-text-3" id="text-7-2">
 <ul class="org-ul">
 <li>To get all presences you should send <b>GET</b> request to the following URL: <a href="https://attendance-inno.herokuapp.com/api/presences">https://attendance-inno.herokuapp.com/api/presences</a></li>
@@ -769,8 +769,8 @@ Example of response:
 </ul>
 </div>
 </div>
-<div id="outline-container-org1296ec0" class="outline-3">
-<h3 id="org1296ec0"><span class="section-number-3">7.3</span> Delete the presence</h3>
+<div id="outline-container-org4966bcf" class="outline-3">
+<h3 id="org4966bcf"><span class="section-number-3">7.3</span> Delete the presence</h3>
 <div class="outline-text-3" id="text-7-3">
 <ul class="org-ul">
 <li>You should send <b>DELETE</b> request to: <a href="https://attendance-inno.herokuapp.com/api/presence/2">https://attendance-inno.herokuapp.com/api/presence/2</a> (where 2 is id of a presence)</li>
@@ -779,8 +779,8 @@ Example of response:
 </div>
 </div>
 </div>
-<div id="outline-container-org4672452" class="outline-2">
-<h2 id="org4672452"><span class="section-number-2">8</span> User specific requests</h2>
+<div id="outline-container-orgbf0914d" class="outline-2">
+<h2 id="orgbf0914d"><span class="section-number-2">8</span> User specific requests</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li>There requests returns information about the user.</li>
@@ -788,8 +788,8 @@ Example of response:
 <li>All requests should have additional header key "Authorization" (value is token from previous section)</li>
 </ul>
 </div>
-<div id="outline-container-org7c29898" class="outline-3">
-<h3 id="org7c29898"><span class="section-number-3">8.1</span> Current user</h3>
+<div id="outline-container-orga88bdd3" class="outline-3">
+<h3 id="orga88bdd3"><span class="section-number-3">8.1</span> Current user</h3>
 <div class="outline-text-3" id="text-8-1">
 <ul class="org-ul">
 <li>The following request returns main information about the user.</li>
@@ -818,8 +818,8 @@ Example of a response:
 </ul>
 </div>
 </div>
-<div id="outline-container-org3f1efb5" class="outline-3">
-<h3 id="org3f1efb5"><span class="section-number-3">8.2</span> User role</h3>
+<div id="outline-container-orgf5a4a60" class="outline-3">
+<h3 id="orgf5a4a60"><span class="section-number-3">8.2</span> User role</h3>
 <div class="outline-text-3" id="text-8-2">
 <ul class="org-ul">
 <li>This request returns role of current user</li>
@@ -839,8 +839,8 @@ Example of response
 </ul>
 </div>
 </div>
-<div id="outline-container-orga27c585" class="outline-3">
-<h3 id="orga27c585"><span class="section-number-3">8.3</span> User presences</h3>
+<div id="outline-container-orgcee2049" class="outline-3">
+<h3 id="orgcee2049"><span class="section-number-3">8.3</span> User presences</h3>
 <div class="outline-text-3" id="text-8-3">
 <ul class="org-ul">
 <li>This request return all presences of current user</li>
@@ -877,8 +877,8 @@ Example of response
 </ul>
 </div>
 </div>
-<div id="outline-container-org2b0228f" class="outline-3">
-<h3 id="org2b0228f"><span class="section-number-3">8.4</span> User classes</h3>
+<div id="outline-container-org4ec7cee" class="outline-3">
+<h3 id="org4ec7cee"><span class="section-number-3">8.4</span> User classes</h3>
 <div class="outline-text-3" id="text-8-4">
 <ul class="org-ul">
 <li>This request return all classes which was enrolled by current user.</li>
@@ -904,7 +904,7 @@ Example of response
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2020-04-19 Sun 02:08</p>
+<p class="date">Created: 2020-05-08 Fri 04:19</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

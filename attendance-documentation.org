@@ -85,10 +85,10 @@
      + After expiration of token you can login one more time or use the next request.
 ** Token renewal
    + After token expiration you can update it via renewal_token.
-   + You can send *POST* request with empty body and additional header key "Authorization" (value is renewal_token) to the following URL: https://attendance-inno.herokuapp.com/api/api/session/renew
+   + You can send *POST* request with empty body and additional header key "Authorization" (value is renewal_token) to the following URL: https://attendance-inno.herokuapp.com/api/session/renew
    + Curl example:
      #+BEGIN_SRC bash
-       curl -X POST -H "Authorization: RENEW_TOKEN" https://attendance-inno.herokuapp.com/api/api/session/renew
+       curl -X POST -H "Authorization: RENEW_TOKEN" https://attendance-inno.herokuapp.com/api/session/renew
      #+END_SRC
    + Example of response:
      #+BEGIN_SRC js

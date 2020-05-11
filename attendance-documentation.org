@@ -13,9 +13,8 @@
   + Application is hosting on heroku, due to limitations of free plan, first request will proceed slow.
   + You should use https instead of http
 * Change Log
-  + Added list of enrolled classes in "Current user" request.
-  + Added "User classes" request (see "User specific requests" section).
-  + Added "Class students" request (see "Classes" section).
+  + In this version of API, system started to record amount of activities per week for specific course.
+  + See "Classes" section.
 * Roles
   In this version of application there are three roles:
   + Student
@@ -109,7 +108,8 @@
      #+BEGIN_SRC js
        {
            "class": {
-               "title": "Software project"
+               "title": "Software project",
+               "activities_per_week": 4
            }
        }
      #+END_SRC
@@ -118,10 +118,32 @@
        {
            "class": {
                "id": 1,
-               "title": "Software project"
+               "title": "Software project",
+               "activities_per_week": 4
            }
        }
      #+END_SRC
+ 
+   + Also, you may not explicitly specify number of activities per week. In this case, number of activities will be default number (three).
+   + Example of request:
+   #+BEGIN_SRC js
+       {
+           "class": {
+               "title": "Control Theory"
+           }
+       }
+     #+END_SRC
+     + The example of response:
+     #+BEGIN_SRC js
+       {
+           "class": {
+               "id": 2,
+               "title": "Control Theory",
+               "activities_per_week": 3
+           }
+       }
+     #+END_SRC
+
 ** Get all classes
    + To get all classes you should send *GET* request to the following URL: https://attendance-inno.herokuapp.com/api/classes
    + Example of response:
@@ -130,11 +152,13 @@
            "classes": [
                {
                    "id": 1,
-                   "title": "Software project"
+                   "title": "Software project",
+                   "activities_per_week": 4
                },
                {
                    "id": 2,
-                   "title": "Control Theory"
+                   "title": "Control Theory",
+                   "activities_per_week": 3
                }
            ]
        }
@@ -153,7 +177,8 @@
                    "classes": [
                        {
                            "id": 2,
-                           "title": "Software project"
+                           "title": "Software project",
+                           "activities_per_week": 4
                        }
                    ],
                    "email": "test@mail.ru",
@@ -235,7 +260,8 @@
                },
                "class": {
                    "id": 2,
-                   "title": "Software project"
+                   "title": "Software project",
+                   "activities_per_week": 4
                },
                "id": 21,
                "user": {
@@ -262,7 +288,8 @@
                    },
                    "class": {
                        "id": 2,
-                       "title": "Software project"
+                       "title": "Software project",
+                       "activities_per_week": 4
                    },
                    "id": 11,
                    "user": {
@@ -281,7 +308,8 @@
                    },
                    "class": {
                        "id": 2,
-                       "title": "Software project"
+                       "title": "Software project",
+                       "activities_per_week": 4
                    },
                    "id": 16,
                    "user": {
@@ -318,7 +346,8 @@
                "classes": [
                    {
                        "id": 2,
-                       "title": "Software project"
+                       "title": "Software project",
+                       "activities_per_week": 4
                    }
                ]
            }
@@ -375,7 +404,8 @@
            "classes": [
                {
                    "id": 2,
-                   "title": "Software project"
+                   "title": "Software project",
+                   "activities_per_week": 4
                }
            ]
        }
